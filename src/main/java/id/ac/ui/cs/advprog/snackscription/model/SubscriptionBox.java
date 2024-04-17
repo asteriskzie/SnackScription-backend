@@ -11,8 +11,8 @@ public class SubscriptionBox {
     private String id;
     private String name;
     private String category;
-    private String photo;
-    private String price; // or private int[] price; if you have a way to handle int[] with JPA
-    private List<Item> items; // Make sure the Item class is annotated properly for JPA as well
+    private String photo; //Box Thumbnail Address from static folder
+    private List<Integer> price; // Prices according to subscription length (1 month/3 month/ 6 month)
+    private List<Item> items; // Item Model
     private Date dateCreated;
 }
