@@ -16,14 +16,14 @@ public class Review {
     private String userId;
     private String subscriptionBoxId;
 
-    public Review(int rating, String content, String userId, String subsciprionBoxId) {
+    public Review(int rating, String content, String userId, String subscriptionBoxId) {
         // id should be generated automatically
         this.id = UUID.randomUUID().toString();
         this.rating = rating;
         this.content = content;
         this.state = new ReviewStatePending(this);
         this.userId = userId;
-        this.subscriptionBoxId = subsciprionBoxId;
+        this.subscriptionBoxId = subscriptionBoxId;
     }
 
     public void editReview(int rating, String content) {
