@@ -48,9 +48,7 @@ public class ReviewTest {
     void testEditReviewInvalid() {
         int newRating = -1;
         String newContent = "jelek";
-        assertThrows(RuntimeException.class, () -> {
-            this.review.editReview(newRating, newContent);
-        });
+        assertThrows(RuntimeException.class, () -> this.review.editReview(newRating, newContent));
     }
 
     @Test
@@ -70,9 +68,7 @@ public class ReviewTest {
     @Test
     void testApproveApprovedReview() {
         this.review.setState(new ReviewStateApproved(this.review));
-        assertThrows(RuntimeException.class, () -> {
-            this.review.getState().approve();
-        });
+        assertThrows(RuntimeException.class, () -> this.review.getState().approve());
         assertEquals("Approved", this.review.getState().toString());
     }
 
@@ -93,9 +89,7 @@ public class ReviewTest {
     @Test
     void testRejectRejectedReview() {
         this.review.setState(new ReviewStateRejected(this.review));
-        assertThrows(RuntimeException.class, () -> {
-            this.review.getState().reject();
-        });
+        assertThrows(RuntimeException.class, () -> this.review.getState().reject());
         assertEquals("Rejected", this.review.getState().toString());
     }
 }
