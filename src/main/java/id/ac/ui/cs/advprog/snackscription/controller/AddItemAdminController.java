@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/add-item")
-public class AddItemController {
+@RequestMapping("/add-item-admin")
+public class AddItemAdminController {
     @GetMapping("")
-    public String addItemPage() {return "index";}
+    public String addItemAdminPage() {return "index";}
 }
