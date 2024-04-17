@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@Controller
+@Controller 
 @RequestMapping("/")
 public class SubscriptionBoxController {
     @GetMapping("/Subscription-Box-Admin")
