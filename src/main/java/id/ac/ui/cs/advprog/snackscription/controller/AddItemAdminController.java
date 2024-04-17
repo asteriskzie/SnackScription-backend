@@ -8,5 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/add-item-admin")
 public class AddItemAdminController {
     @GetMapping("")
-    public String addItemAdminPage() {return "index";}
+    public String addItemAdminPage() {return "additem";}
 }
+
