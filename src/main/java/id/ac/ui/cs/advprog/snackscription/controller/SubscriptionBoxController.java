@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@Controller
+@Controller 
 @RequestMapping("/")
-public class HomeController {
-    @GetMapping("/")
+public class SubscriptionBoxController {
+    @GetMapping("/Subscription-Box-Admin")
     public String homePage() {
-        return "index";
+        return "SubscriptionBoxAdmin";
     }
 }
