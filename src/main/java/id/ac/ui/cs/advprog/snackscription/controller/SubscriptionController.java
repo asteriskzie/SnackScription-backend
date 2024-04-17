@@ -1,15 +1,16 @@
 package id.ac.ui.cs.advprog.snackscription.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
-@RequestMapping("/")
-public class HomeController {
-    @GetMapping("/")
+@RequestMapping("/subscription")
+public class SubscriptionController {
+    @GetMapping("")
     public String homePage() {
-        return "index";
+        return "subscription";
     }
 }
