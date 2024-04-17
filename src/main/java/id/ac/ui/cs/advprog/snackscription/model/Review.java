@@ -17,7 +17,6 @@ public class Review {
     private String subscriptionBoxId;
 
     public Review(int rating, String content, String userId, String subscriptionBoxId) {
-        // id should be generated automatically
         this.id = UUID.randomUUID().toString();
         this.rating = rating;
         this.content = content;
