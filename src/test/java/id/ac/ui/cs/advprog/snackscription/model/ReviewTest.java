@@ -54,16 +54,48 @@ public class ReviewTest {
     }
 
     @Test
-    void testApproveReview() {
-        assertInstanceOf(ReviewStatePending.class, this.review.getState());
+    void testApprovePendingReview() {
+        this.review.setState(new ReviewStatePending(this.review));
         this.review.getState().approve();
         assertEquals("Approved", this.review.getState().toString());
     }
 
     @Test
-    void testRejectReview() {
-        assertInstanceOf(ReviewStatePending.class, this.review.getState());
+    void testRejectPendingReview() {
+        this.review.setState(new ReviewStatePending(this.review));
         this.review.getState().reject();
+        assertEquals("Rejected", this.review.getState().toString());
+    }
+
+    @Test
+    void testApproveApprovedReview() {
+        this.review.setState(new ReviewStateApproved(this.review));
+        assertThrows(RuntimeException.class, () -> {
+            this.review.getState().approve();
+        });
+        assertEquals("Approved", this.review.getState().toString());
+    }
+
+    @Test
+    void testRejectApprovedReview() {
+        this.review.setState(new ReviewStateApproved(this.review));
+        this.review.getState().reject();
+        assertEquals("Rejected", this.review.getState().toString());
+    }
+
+    @Test
+    void testApproveRejectedReview() {
+        this.review.setState(new ReviewStateRejected(this.review));
+        this.review.getState().approve();
+        assertEquals("Approved", this.review.getState().toString());
+    }
+
+    @Test
+    void testRejectRejectedReview() {
+        this.review.setState(new ReviewStateRejected(this.review));
+        assertThrows(RuntimeException.class, () -> {
+            this.review.getState().reject();
+        });
         assertEquals("Rejected", this.review.getState().toString());
     }
 }
