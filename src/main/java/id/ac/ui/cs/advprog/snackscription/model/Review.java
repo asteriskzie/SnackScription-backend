@@ -7,14 +7,14 @@ import java.util.UUID;
 
 @Getter
 public class Review {
-    private String id;
+    private final String id;
     private int rating;
     @Setter
     private String content;
     @Setter
     private ReviewState state;
-    private String userId;
-    private String subscriptionBoxId;
+    private final String userId;
+    private final String subscriptionBoxId;
 
     public Review(int rating, String content, String userId, String subscriptionBoxId) {
         this.id = UUID.randomUUID().toString();
