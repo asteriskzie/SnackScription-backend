@@ -5,7 +5,7 @@ import id.ac.ui.cs.advprog.snackscription.model.SubscriptionBox;
 import java.util.List;
 
 public interface SubscriptionBoxService {
-    SubscriptionBox create(SubscriptionBox subscriptionBox);
+    public SubscriptionBox create(SubscriptionBox subscriptionBox);
     SubscriptionBox findById(String id);
     List<SubscriptionBox> findAll();
     SubscriptionBox save(SubscriptionBox subscriptionBox);

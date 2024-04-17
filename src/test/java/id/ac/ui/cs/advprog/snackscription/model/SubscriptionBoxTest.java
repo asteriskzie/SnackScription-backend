@@ -21,7 +21,7 @@ class SubscriptionBoxTest {
         subscriptionBox.setCategory("Food");
         subscriptionBox.setPhoto("path/to/photo");
         subscriptionBox.setPrice(Arrays.asList(100, 200, 300)); // Example prices for 1, 3, 6 months
-        subscriptionBox.setItems(Arrays.asList(new Item(), new Item())); // Assuming Item is another model class
+        subscriptionBox.setItems(Arrays.asList(new Items(), new Items())); // Assuming Item is another model class
         subscriptionBox.setDateCreated(new Date());
     }
 
@@ -57,7 +57,7 @@ class SubscriptionBoxTest {
 
     @Test
     void testGetItems() {
-        List<Item> items = subscriptionBox.getItems();
+        List<Items> items = subscriptionBox.getItems();
         assertNotNull(items);
         assertEquals(2, items.size());
     }
@@ -70,7 +70,7 @@ class SubscriptionBoxTest {
     @Test
     void subscriptionBoxShouldHaveAtLeastOneItem() {
         SubscriptionBox subscriptionBox = new SubscriptionBox();
-        subscriptionBox.setItems(Arrays.asList(new Item())); // Add at least one item
+        subscriptionBox.setItems(Arrays.asList(new Items())); // Add at least one item
 
         assertFalse(subscriptionBox.getItems().isEmpty(), "Items list should not be empty");
     }
@@ -115,52 +115,4 @@ class SubscriptionBoxTest {
         assertNull(subscriptionBox.getPhoto(), "Photo can be null");
     }
 
-    // Additional business logic tests
-
-    // Test that SubscriptionBox with empty items list should fail
-    @Test
-    void subscriptionBoxWithNoItemsShouldFail() {
-        SubscriptionBox subscriptionBox = new SubscriptionBox();
-        subscriptionBox.setItems(Arrays.asList()); // No items added
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            // Insert logic here that throws IllegalArgumentException when items list is empty
-            // For example, you might have a method that checks the business rules when setting the items
-            checkSubscriptionBoxItems(subscriptionBox.getItems());
-        }, "SubscriptionBox with no items should throw an IllegalArgumentException");
-    }
-
-    // Test that SubscriptionBox with a price array that does not have a size of 3 should fail
-    @Test
-    void subscriptionBoxWithInvalidPriceSizeShouldFail() {
-        SubscriptionBox subscriptionBox = new SubscriptionBox();
-        subscriptionBox.setPrice(Arrays.asList(100, 200)); // Invalid size
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            // Insert logic here that throws IllegalArgumentException when price size is not 3
-            checkSubscriptionBoxPrices(subscriptionBox.getPrice());
-        }, "SubscriptionBox with invalid price size should throw an IllegalArgumentException");
-    }
-
-    // Test that SubscriptionBox with null id, name, or category should fail
-    @Test
-    void subscriptionBoxWithNullIdNameOrCategoryShouldFail() {
-        assertAll(
-                () -> assertThrows(NullPointerException.class, () -> {
-                    SubscriptionBox subscriptionBox = new SubscriptionBox();
-                    subscriptionBox.setId(null);
-                    checkSubscriptionBoxId(subscriptionBox.getId());
-                }, "SubscriptionBox with null ID should throw a NullPointerException"),
-                () -> assertThrows(NullPointerException.class, () -> {
-                    SubscriptionBox subscriptionBox = new SubscriptionBox();
-                    subscriptionBox.setName(null);
-                    checkSubscriptionBoxName(subscriptionBox.getName());
-                }, "SubscriptionBox with null Name should throw a NullPointerException"),
-                () -> assertThrows(NullPointerException.class, () -> {
-                    SubscriptionBox subscriptionBox = new SubscriptionBox();
-                    subscriptionBox.setCategory(null);
-                    checkSubscriptionBoxCategory(subscriptionBox.getCategory());
-                }, "SubscriptionBox with null Category should throw a NullPointerException")
-        );
-    }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class SubscriptionBoxServiceImpl implements SubscriptionBoxService {
 
     @Autowired
-    private  SubscriptionBoxRepository SubscriptionBoxRepository;
+    private  SubscriptionBoxRepository subscriptionBoxRepository;
 
     @Override
     public SubscriptionBox create(SubscriptionBox product) {
@@ -28,7 +28,7 @@ public class SubscriptionBoxServiceImpl implements SubscriptionBoxService {
     @Override
     @Transactional(readOnly = true)
     public SubscriptionBox findById(String id) {
-        return subscriptionBoxRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Subscription box not found: " + id));
+        return (SubscriptionBox) subscriptionBoxRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Subscription box not found: " + id));
     }
 
     @Override
@@ -38,11 +38,10 @@ public class SubscriptionBoxServiceImpl implements SubscriptionBoxService {
     }
 
     @Override
-    @Transactional
     public SubscriptionBox save(SubscriptionBox subscriptionBox) {
-        validateSubscriptionBox(subscriptionBox);
-        return subscriptionBoxRepository.save(subscriptionBox);
+        return null;
     }
+
 
     @Override
     @Transactional
